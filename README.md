@@ -147,7 +147,12 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+  Node allows us to create server side apps and express is a framework. They allow us to use javascript with npm libraries, write handlers, set web app settings, and add middleware. 
 1. Understand and explain the use of Middleware.
+  middleware is used to help us keep code dry by using a function over and over instead of writing the same things repetedly
 1. The basic principles of the REST architectural style.
+  Representional State Transfer has to conform to a clietn-server made up of clients servers and resources with requests managed by http. 
 1. Understand and explain the use of Express Routers.
+  express routers respond to a client request to an endpoint path and a http request method
 1. Describe tooling used to manually test the correctness of an API.
+  using postman or httpie you can see if the requests are working on your server and then reset the database
