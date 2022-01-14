@@ -25,7 +25,22 @@ async function validateProjectID(req, res, next) {
     }
 }
 
+function validateProject(req, res, next) {
+    const { name, description, completed } = req.body
+    if (!name || !description || !name.trim() || !description.trim()) {
+        res.status(400).json({
+            message: "name and description are required"
+        })
+    } else {
+        req.name = name.trim()
+        req.description = description.trim()
+        req.completed = completed
+        next()
+    }
+}
+
 module.exports = {
     logger,
     validateProjectID,
+    validateProject,
 }
