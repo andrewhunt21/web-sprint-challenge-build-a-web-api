@@ -26,6 +26,22 @@ router.post('/', validateAction, (req, res, next) => {
         .catch(next)
 })
 
+router.put('/:id', validateActionId, validateAction, (req, res, next) => {
+    const { completed } = req.body
+    if (typeof completed === 'undefined' || completed === null) {
+        res.status(400).json({ message: "completed status is required" })
+    } else {
+        Actions.update(req.params.id, { project_id: req.project_id, description: req.description, notes: req.notes, completed: req.completed })
+            .then(() => {
+                return Actions.get(req.params.id)
+            })
+            .then(action => {
+                res.json(action)
+            })
+            .catch(next)
+    }
+})
+
 router.use((err, req, res, next) => {
     res.status(err.status || 500).json({
         message: err.message,

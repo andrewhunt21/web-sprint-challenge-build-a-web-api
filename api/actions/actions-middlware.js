@@ -18,7 +18,7 @@ async function validateActionId(req, res, next) {
 }
 
 function validateAction(req, res, next) {
-    const { project_id, description, notes } = req.body
+    const { project_id, description, notes, completed } = req.body
     if (!project_id || !description || !description.trim() || !notes || !notes.trim()) {
         res.status(400).json({
             message: "missing required fields"
@@ -27,6 +27,7 @@ function validateAction(req, res, next) {
         req.project_id = project_id
         req.description = description.trim()
         req.notes = notes.trim()
+        req.completed = completed
         next()
     }
 }
