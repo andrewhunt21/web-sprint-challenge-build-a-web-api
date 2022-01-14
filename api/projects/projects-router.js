@@ -54,6 +54,15 @@ router.delete('/:id', validateProjectID, async (req, res, next) => {
     }
 })
 
+router.get('/:id/actions', validateProjectID, async (req, res, next) => {
+    try {
+        const actions = await Projects.getProjectActions(req.params.id)
+        res.json(actions)
+    } catch (err) {
+        next(err)
+    }
+})
+
 router.use((err, req, res, next) => {
     res.status(err.status || 500).json({
         message: err.message,
